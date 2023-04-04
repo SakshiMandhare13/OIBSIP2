@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Todo List</title>
+   <link rel="stylesheet" type="text/css" href="Style.css">
+</head>
+<div class="c7">
+<body background="picture.jpg" style="backface-visibility: no-repeat; background-size: 100%;">
+    <div>
+    <center><h1 class="list">ToDo List</h1></center><br>
+    <br>
+      <div class="c1">
+         <div id="i1">
+         <input class="c2" type="text" placeholder="Enter Task">
+         <button id="i2">Add</button>
+      </div>
+      <div id="i3"></div>
+    </div>
+    <script>
+      document.querySelector('#i2').onclick=
+      function()
+      {
+         if (document.querySelector('.c2').
+            value.length == 0) 
+         {
+            alert("Please Enter a Task");
+         }
+         else
+         {
+            document.querySelector('#i3').innerHTML 
+            +=`<div class="task"><span id="taskname">${document.querySelector('.c2').value}</span><button class="delete">X</button></div>
+            `;
+
+            var current_tasks = document.querySelectorAll('.delete');
+
+            for (var i = 0; i < current_tasks.length; i++) 
+            {
+               current_tasks[i].onclick = function()
+               {
+                  this.parentNode.remove();
+               }
+            }
+
+            var tasks = document.querySelectorAll('#taskname');
+
+            for (var i = 0; i < tasks.length; i++) 
+            {
+                tasks[i].onclick = function()
+               {
+                  this.classList.toggle('completed');
+               }
+            }
+            document.querySelector('.c2').value ="";
+         }
+      }
+    </script>
+</div>
+</body>
+</html>
